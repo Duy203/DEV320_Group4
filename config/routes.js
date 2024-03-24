@@ -24,12 +24,12 @@ module.exports.routes = {
 /////////////////////////////////////////////////////////here is updated routes.js code:
 '/': { view: 'pages/index' },
 '/create':{view: 'pages/create'},
-// '/listevents': { view: 'pages/listevents' },
-'/events': { view: 'pages/events' },
-
 '/about': { view: 'pages/about'},
 '/help': { view: 'pages/help'},
 '/legal': { view: 'pages/legal'},
+
+'GET /updateEvent/:id':'EventController.showUpdateForm',
+'POST /updateEvent/:id':'EventController.update',
 
 'POST /events': 'EventController.create',
 'GET /listevents': 'EventController.find',

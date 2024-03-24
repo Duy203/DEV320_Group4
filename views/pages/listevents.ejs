@@ -33,7 +33,8 @@
                                             </div>
                                             <div class="btnContainer2">
                                                 <button type="button" class="btnDelete" onclick="deleteEvent('<%= event.id %>')"><span class="text">Delete</span></button>
-                                                <a href="/create" style="text-decoration: none;"><button type="button" class="btnUpdate" onclick="getId('<%= event.id %>')"><span class="text">Update</span></button></a>
+                                                <!-- <a href="/create" style="text-decoration: none;"><button type="button" class="btnUpdate" onclick="getId('<%= event.id %>')"><span class="text">Update</span></button></a> -->
+                                                <a href="/updateEvent/<%= event.id %>" style="text-decoration: none;"><button type="button" class="btnUpdate" onclick="getId('<%= event.id %>')"><span class="text">Update</span></button></a>
                                                 <br>
                                             </div>    
                                         </div>

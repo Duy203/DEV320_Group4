@@ -45,6 +45,10 @@ function getInfo() {
     };
     var item = localStorage.getItem('myItem');
     updateEvent(item, updateEvents);
+    events = [events];
+    alert("Your Event has been updated")
+    return res.view('pages/listevents',{events});
+    
 }
 
 

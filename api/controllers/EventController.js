@@ -22,20 +22,38 @@ module.exports = {
       }
     },
   
-    // Update action
+   
   update: async function(req, res) {
     try {
-      const { id } = req.params;
-      const { name, location, date, host, additionalMessage } = req.body;
-      const updatedEvent = await CalendarEvent.updateOne({ id }).set({ name, location, date, host, additionalMessage });
+      const updatedEvent = await CalendarEvent.updateOne({ id: req.params.id }).set({
+        name: req.body.name,
+        location: req.body.location,
+        date: req.body.date,
+        host: req.body.host,
+        additionalMessage: req.body.additionalMessage,
+      });
       if (!updatedEvent) {
         return res.notFound('Event not found');
       }
-      return res.json(updatedEvent);
+      return res.redirect('/listevents'); // Or wherever you want to redirect after update
     } catch (err) {
       return res.serverError(err);
     }
   },
+  
+  showUpdateForm: async function(req, res) {
+    try {
+        const event = await CalendarEvent.findOne({ id: req.params.id });
+        if (!event) {
+            return res.notFound('Event not found');
+        }
+        return res.view('pages/updateEvent', { event: event });
+    } catch (err) {
+        return res.serverError(err);
+    }
+},
+
+
 
     // Delete action
     delete: async function(req, res) {
